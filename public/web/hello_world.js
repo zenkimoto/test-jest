@@ -7,7 +7,7 @@ class HelloWorld extends HTMLElement {
     this.attachShadow({
       mode: "open"
     });
-
+    
     // Create Template Element with Slot
     let template = document.createElement('template');
     template.innerHTML = `<span><slot name="text"></slot></span>`;
@@ -49,4 +49,4 @@ class HelloWorld extends HTMLElement {
 
   // make sure that the <hello-world></hello-world>
   // or simply <hello-world /> is recognised as this element
-  customElements.define("hello-world", HelloWorld);
+  window.customElements.define("hello-world", HelloWorld);

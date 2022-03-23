@@ -1,16 +1,10 @@
-class CustomElement extends window.HTMLElement {
-  constructor() {
-    super()
-    this.attachShadow({mode: 'open'})
-    this.shadowRoot.innerHTML = '<template><slot /></template>'
-  }
-}
+require('../hello_world')
 
-window.customElements.define('custom-element', CustomElement)
+describe('hello world', () => {
+  test('should be able to generate templated markup', () => {
+    const element = document.createElement('hello-world')
 
-test('shadow dom support', () => {
-  const defaultElement = document.createElement('custom-element')
-  expect(defaultElement.shadowRoot.querySelector('template')).toContainHTML(
-    '<slot>',
-  )
-})
+    expect(element).not.toBeNull();
+    expect(element.shadowRoot.querySelector('span')).toContainHTML('<slot name="text"></slot>');
+  });
+});
